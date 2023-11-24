@@ -1,8 +1,16 @@
 
+import Banner from "./Banner";
+import CarouselSlider from "./CarouselSlider";
+
 const Home = () => {
     return (
         <div>
-            this is home
+            <div className="hidden lg:block">
+                <CarouselSlider></CarouselSlider>
+            </div>
+            <div className="block lg:hidden">
+                <Banner></Banner>
+            </div>
         </div>
     );
 };

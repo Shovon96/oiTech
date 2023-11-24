@@ -63,13 +63,13 @@ const Footer = () => {
 
                     {/* Social Media Links */}
                     <Box sx={{ display: 'flex' }}>
-                        <IconButton color="inherit" href="https://facebook.com">
+                        <IconButton color="inherit" href="">
                             <FacebookIcon />
                         </IconButton>
-                        <IconButton color="inherit" href="https://twitter.com">
+                        <IconButton color="inherit" href="">
                             <TwitterIcon />
                         </IconButton>
-                        <IconButton color="inherit" href="https://linkedin.com">
+                        <IconButton color="inherit" href="">
                             <LinkedInIcon />
                         </IconButton>
                     </Box>
