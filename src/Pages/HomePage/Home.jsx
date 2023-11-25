@@ -1,6 +1,7 @@
 
 import Banner from "./Banner";
 import CarouselSlider from "./CarouselSlider";
+import Featured from "./Featured";
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <div className="block lg:hidden">
                 <Banner></Banner>
             </div>
+            <Featured></Featured>
         </div>
     );
 };
