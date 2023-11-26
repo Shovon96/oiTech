@@ -30,32 +30,13 @@ const Register = () => {
                                     navigate('/home')
                                 }
                             })
-                        // toast.success('Profile Updated Successfully!')
                     })
-                // .catch(error => {
-                //     toast.error(error.message)
-                // })
             })
             .catch(err => {
                 toast.error(err.message)
             })
         reset()
     }
-
-
-    // const handleSignUp = e => {
-    //     e.preventDefault()
-    //     const form = e.target;
-    //     const name = form.name.value;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     console.log(name, email, password);
-    //     createUser(email, password)
-    //     .then(result => {
-    //         const user = result.user;
-    //         console.log(user);
-    //     })
-    // }
 
     return (
         <>
@@ -65,7 +46,7 @@ const Register = () => {
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row w-full">
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <h1 className="text-4xl text-center font-bold text-blue-600 pt-3">Please SignUp</h1>
+                        <h1 className="text-4xl text-center font-extrabold text-blue-600 pt-3">Please SignUp</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <label className="label">
