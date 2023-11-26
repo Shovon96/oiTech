@@ -88,7 +88,7 @@ function Navbar(props) {
                             ))}
                         </Box>
                         <Button color="inherit" sx={{ml: '120px', border: '1px solid #facc15', px: '25px'}}>
-                            <Link to={'/login'} style={{color: 'white', textDecoration: 'none'}}>Login</Link>
+                            <Link to={'/home/login'} style={{color: 'white', textDecoration: 'none'}}>Login</Link>
                         </Button>
                     </Container>
                 </Toolbar>

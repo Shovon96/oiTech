@@ -6,7 +6,7 @@ const ProductsCard = ({ item }) => {
         <div>
             <div className="border rounded-md shadow-xl">
                 <img className="h-56 w-full rounded-md" src={image} alt="" />
-                <Link to={`/featured/${_id}`}>
+                <Link to={`/home/productsDetails/${_id}`}>
                     <h1 title="see details" className="text-2xl my-2 font-bold text-center hover:font-medium hover:text-blue-600 hover:underline">{item?.name}</h1>
                 </Link>
                 <div className="flex justify-between px-4 items-center py-2">
@@ -16,7 +16,7 @@ const ProductsCard = ({ item }) => {
                                 tags?.map((tag, index) => <p key={index}><small>#{tag}</small></p>)
                             }
                         </div>
-                        <p>Post Data: <small className="text-gray-400">{timestamp}</small></p>
+                        <p><small className="text-gray-400">{timestamp}</small></p>
                     </div>
                     <button title="vote"
                         className="border px-3 py-1 rounded-md bg-[#eab308] text-white font-semibold flex items-center gap-1">

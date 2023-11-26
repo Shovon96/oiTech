@@ -44,7 +44,7 @@ const Trending = () => {
                 title={"Elevate your digital experience with our innovative products, merging style and functionality seamlessly.Unleash possibilities with our advanced tech lineup, designed to redefine the way you live and work."}>
             </SectionTitle>
             <div className="flex justify-end mb-4">
-                <button onClick={handleSortUpvote} className="px-3 py-2 shadow-md bg-[#eab308] rounded-md text-white font-bold border">Sort By UpVote</button>
+                <button onClick={handleSortUpvote} className="px-3 py-2 shadow-md bg-blue-500 rounded-md text-white font-bold border">Sort By UpVote</button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 {
@@ -56,7 +56,7 @@ const Trending = () => {
             <div className="flex justify-center mb-4">
                 {visibleCardCount < trending.length && (
                     <Link to={'/home/products'}>
-                        <button onClick={handleShowAll} className="px-6 py-2 bg-[#eab308] text-white font-bold shadow-lg rounded-md border flex items-center gap-2">
+                        <button onClick={handleShowAll} className="px-6 py-2 bg-blue-500 text-white font-bold shadow-lg rounded-md border flex items-center gap-2">
                             Show All Products <ImNewTab />
                         </button>
                     </Link>
