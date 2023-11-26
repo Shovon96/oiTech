@@ -42,7 +42,7 @@ function Navbar(props) {
             <Divider />
             <List sx={{ color: '#fff' }}>
                 {navItems.map((item) => (
-                    <NavLink key={item} to={`/${item.toLowerCase()}`} style={{ color: isItemActive(item) ? '#facc15' : '#fff', textDecoration: isItemActive(item) ? 'underline' : 'none', }}>
+                    <NavLink key={item} to={`/${item.toLowerCase()}`} style={{ color: isItemActive(item) ? '#facc15' : '#fff'}}>
                         <ListItem disablePadding>
                             <ListItemButton sx={{ textAlign: 'center' }}>
                                 <ListItemText primary={item} />
@@ -81,7 +81,7 @@ function Navbar(props) {
                         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                             {navItems.map((item) => (
                                 <NavLink key={item} to={`/${item.toLowerCase()}`} >
-                                    <Button style={{ color: isItemActive(item) ? '#facc15' : '#fff', textDecoration: isItemActive(item) ? 'underline' : 'none', }}>
+                                    <Button style={{ color: isItemActive(item) ? '#facc15' : '#fff', fontWeight: isItemActive(item) ? 'bold' : '', }}>
                                         {item}
                                     </Button>
                                 </NavLink>
