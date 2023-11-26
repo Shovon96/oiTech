@@ -8,7 +8,7 @@ const PrivetRoutes = ({ children }) => {
     const location = useLocation()
 
     if (loading) {
-        return <div className="flex justify-center items-center min-h-[72vh]">
+        return <div className="flex justify-center items-center min-h-[66vh]">
             <h1 className="text-xl text-[#eab308]">Loding....</h1>
         </div>
     }
