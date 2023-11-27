@@ -13,16 +13,22 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Container } from '@mui/material';
+import { Avatar, Container, Menu, MenuItem, Tooltip } from '@mui/material';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'Products', 'Dashboard'];
+const navItems = ['Home', 'Products'];
+const settings = ['Profile', 'Dashboard'];
 
 function Navbar(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const { user, logOut } = useContext(AuthContext)
     const location = useLocation();
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const isItemActive = (item) => {
         // Check if the current route matches the item's path
@@ -33,6 +39,25 @@ function Navbar(props) {
         setMobileOpen((prevState) => !prevState);
     };
 
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.success('Logout Successfully');
+            })
+            .catch(error => {
+                toast.error(error.message);
+
+            })
+    }
+
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', backgroundColor: '#1976d2', height: '100vh' }}>
@@ -42,7 +67,7 @@ function Navbar(props) {
             <Divider />
             <List sx={{ color: '#fff' }}>
                 {navItems.map((item) => (
-                    <NavLink key={item} to={`/${item.toLowerCase()}`} style={{ color: isItemActive(item) ? '#facc15' : '#fff'}}>
+                    <NavLink key={item} to={`/${item.toLowerCase()}`} style={{ color: isItemActive(item) ? '#facc15' : '#fff' }}>
                         <ListItem disablePadding>
                             <ListItemButton sx={{ textAlign: 'center' }}>
                                 <ListItemText primary={item} />
@@ -87,9 +112,44 @@ function Navbar(props) {
                                 </NavLink>
                             ))}
                         </Box>
-                        <Button color="inherit" sx={{ml: '120px', border: '1px solid #facc15', px: '25px'}}>
-                            <Link to={'/login'} style={{color: 'white', textDecoration: 'none'}}>Login</Link>
-                        </Button>
+                        {user ?
+                            <Box sx={{ flexGrow: 0 }}>
+                                <Tooltip title="Open settings">
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                        <Avatar alt="" src={user?.photoURL} />
+                                    </IconButton>
+                                </Tooltip>
+                                <Menu
+                                    sx={{ mt: '45px', px: '10px' }}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElUser}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                >
+                                    <Typography sx={{ px: '10px', borderBottom: '1px solid' }}>{user?.email}</Typography>
+                                    {settings.map((setting) => (
+                                        <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                            <Typography textAlign="center">{setting}</Typography>
+                                        </MenuItem>
+                                    ))}
+                                    <Button onClick={handleLogOut} color="inherit" sx={{ mx: '15px', borderBottom: '1px solid', borderTop: '1px solid', fontWeight: 'bold' }}>
+                                        LogOut
+                                    </Button>
+                                </Menu>
+                            </Box> :
+                            <Button color="inherit" sx={{ ml: '120px', border: '1px solid #facc15', px: '25px' }}>
+                                <Link to={'/login'} style={{ color: 'white', textDecoration: 'none' }}>Login</Link>
+                            </Button>
+                        }
                     </Container>
                 </Toolbar>
             </AppBar>
