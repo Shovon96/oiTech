@@ -13,7 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Avatar, Container, Menu, MenuItem, Tooltip } from '@mui/material';
+import { Avatar, Container, Menu, Tooltip } from '@mui/material';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
@@ -21,7 +21,7 @@ import toast from 'react-hot-toast';
 
 const drawerWidth = 240;
 const navItems = ['Home', 'Products'];
-const settings = ['Profile', 'Dashboard'];
+// const settings = ['Dashboard'];
 
 function Navbar(props) {
     const { window } = props;
@@ -135,13 +135,18 @@ function Navbar(props) {
                                     open={Boolean(anchorElUser)}
                                     onClose={handleCloseUserMenu}
                                 >
-                                    <Typography sx={{ px: '10px', borderBottom: '1px solid' }}>{user?.email}</Typography>
-                                    {settings.map((setting) => (
+                                    <Typography sx={{ px: '30px', borderBottom: '1px solid' }}>{user?.displayName}</Typography>
+                                    {/* {settings.map((setting) => (
                                         <MenuItem key={setting} onClick={handleCloseUserMenu}>
                                             <Typography textAlign="center">{setting}</Typography>
                                         </MenuItem>
-                                    ))}
-                                    <Button onClick={handleLogOut} color="inherit" sx={{ mx: '15px', borderBottom: '1px solid', borderTop: '1px solid', fontWeight: 'bold' }}>
+                                    ))} */}
+                                    <Link to={'/dashboard'}>
+                                        <Button color="inherit" sx={{ mx: '15px', display: 'block', borderBottom: '1px solid', fontWeight: 'bold' }}>
+                                            Dashboard
+                                        </Button>
+                                    </Link>
+                                    <Button onClick={handleLogOut} color="inherit" sx={{ mx: '15px', borderBottom: '1px solid', fontWeight: 'bold' }}>
                                         LogOut
                                     </Button>
                                 </Menu>

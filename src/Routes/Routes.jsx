@@ -7,6 +7,7 @@ import ProductsDetails from "../Shared/ProductsDetails";
 import Login from "../Pages/Login-Registetion/Login";
 import Register from "../Pages/Login-Registetion/Registetion";
 import PrivetRoutes from "./PrivetRoutes";
+import Dashboard from "../MainLayout/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,20 @@ const router = createBrowserRouter([
             }
         ]
     },
+
+
+    // Dashboard path and elements
+    {
+        path: '/dashboard',
+        element: <PrivetRoutes><Dashboard></Dashboard></PrivetRoutes>,
+        // children: [
+        //     {
+        //         path: '/dashboard/myProfile',
+
+        //     }
+        // ]
+
+    }
 ]);
 
 export default router

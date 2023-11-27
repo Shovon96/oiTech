@@ -6,7 +6,7 @@ import SectionTitle from "../../Shared/SectionTitle";
 const Featured = () => {
     const axiosPublic = useAxiosPublic()
 
-    const { data: featured = [] } = useQuery({
+    const { data: featured = [], isLoading } = useQuery({
         queryKey: ['featured'],
         queryFn: async () => {
             const res = await axiosPublic.get('/features')
@@ -14,6 +14,12 @@ const Featured = () => {
         }
     })
     // console.log(featured);
+
+    if (isLoading) {
+        return <div className="flex justify-center items-center min-h-[100vh]">
+            <h1 className="text-xl text-[#eab308]">Loding....</h1>
+        </div>
+    }
 
     return (
         <>

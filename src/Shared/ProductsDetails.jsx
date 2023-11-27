@@ -7,23 +7,25 @@ import { BiSolidUpArrow } from "react-icons/bi";
 const ProductsDetails = () => {
     const { id } = useParams();
     const axiosPublic = useAxiosPublic()
-    const { data: featured = {} } = useQuery({
-        queryKey: ['featured'],
+    const { data: [trendingData, featuredData] = [] } = useQuery({
+        queryKey: ['trendingAndFeatured', id],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/features/${id}`)
-            // console.log(res.data);
-            return res.data
+            const trendingPromise = axiosPublic.get(`/trendings/${id}`);
+            const featuredPromise = axiosPublic.get(`/features/${id}`);
+            
+            const [trendingResponse, featuredResponse] = await Promise.all([trendingPromise, featuredPromise]);
+            return [trendingResponse.data, featuredResponse.data];
         }
-    })
+    });
 
-    const { image, name, description, tags, externalLinks, upvotes, timestamp } = featured
+    const { image, name, description, tags, externalLinks, upvotes, timestamp } = trendingData || featuredData || {};
 
     return (
         <>
             <div className="container mx-auto mt-8">
                 <div className=" mx-auto bg-white p-6 rounded-md flex lg:flex-row flex-col gap-6">
                     <div className="flex-1 border rounded-md shadow-lg">
-                        <img src={image} alt={name} className="w-full h-auto lg:mt-24" />
+                        <img src={image} alt={name} className="w-full h-auto lg:mt-12" />
                     </div>
                     <div className="flex-1 border rounded-md p-5">
                         <h1 className="text-3xl font-bold mb-2">{name}</h1>
