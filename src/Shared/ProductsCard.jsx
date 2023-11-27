@@ -6,7 +6,7 @@ const ProductsCard = ({ item }) => {
         <div>
             <div className="border rounded-md shadow-xl">
                 <img className="h-56 w-full rounded-md" src={image} alt="" />
-                <Link to={`/home/productsDetails/${_id}`}>
+                <Link to={`/productsDetails/${_id}`}>
                     <h1 title="see details" className="text-2xl my-2 font-bold text-center hover:font-medium hover:text-blue-600 hover:underline">{item?.name}</h1>
                 </Link>
                 <div className="flex justify-between px-4 items-center py-2">

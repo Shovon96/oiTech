@@ -10,7 +10,7 @@ import PrivetRoutes from "./PrivetRoutes";
 
 const router = createBrowserRouter([
     {
-        path: "/home",
+        path: "/",
         errorElement: <ErrorPage></ErrorPage>,
         element: <Mainlayout></Mainlayout>,
         children: [
@@ -19,19 +19,19 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/home/products',
+                path: '/products',
                 element: <Products></Products>
             },
             {
-                path: '/home/productsDetails/:id',
+                path: '/productsDetails/:id',
                 element: <PrivetRoutes><ProductsDetails></ProductsDetails></PrivetRoutes>
             },
             {
-                path: '/home/login',
+                path: '/login',
                 element: <Login></Login>
             },
             {
-                path: '/home/register',
+                path: '/register',
                 element: <Register></Register>
             }
         ]

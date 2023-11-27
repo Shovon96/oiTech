@@ -78,13 +78,13 @@ const Register = () => {
                                 {errors.password?.type === 'pattern' && <span className="text-red-600">Password should be must 6 charecter and one uppercase, one lowercase and special charecter, one number is required</span>}
                             </div>
                             <div className="form-control mt-4">
-                                <button className="btn btn-primary">SignUp</button>
+                                <button className="btn bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg">SignUp</button>
                             </div>
                         </form>
                         <div className="mb-2">
                             <SocialLogin></SocialLogin>
                         </div>
-                        <p className="text-center mb-3"><small>You already have and account Go? <Link to='/home/login' className='text-blue-600 hover:underline'>SignIn</Link></small></p>
+                        <p className="text-center mb-3"><small>You already have and account Go? <Link to='/login' className='text-blue-600 hover:underline'>SignIn</Link></small></p>
                     </div>
                 </div>
             </div>

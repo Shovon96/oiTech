@@ -3,13 +3,13 @@ import { useParams } from "react-router-dom";
 
 const ProductsDetails = () => {
     const {id} = useParams();
-    const [products, setProducts] = useState()
+    // const [products, setProducts] = useState()
     useEffect(() => {
-        fetch(`http://localhost:5000/features/${id}`)
+        fetch(`http://localhost:5000/trendings/${id}`)
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => console.log(data))
     }, [id])
-    console.log(products);
+    // console.log(products);
     console.log(id);
 
     return (

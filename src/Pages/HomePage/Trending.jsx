@@ -55,7 +55,7 @@ const Trending = () => {
             </div>
             <div className="flex justify-center mb-4">
                 {visibleCardCount < trending.length && (
-                    <Link to={'/home/products'}>
+                    <Link to={'/products'}>
                         <button onClick={handleShowAll} className="px-6 py-2 bg-blue-500 text-white font-bold shadow-lg rounded-md border flex items-center gap-2">
                             Show All Products <ImNewTab />
                         </button>
