@@ -14,6 +14,8 @@ const AddProducts = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   // const [tags, setTags] = useState([]);
   const [externalLinks, setExternalLinks] = useState({});
+  const currentDate = new Date().toISOString().slice(0, 16);
+  // const currentDate = new Date().toLocaleString().slice(0,16);
 
   const onSubmit = async (data) => {
     const tags = data.tags.split(' ')
@@ -27,20 +29,20 @@ const AddProducts = () => {
       },
       tags,
       externalLinks,
+      timestamp: currentDate,
     };
   
 
     try {
       // TODO: Send productData to your backend API to save in MongoDB
       const productPost = await axiosSecure.post('/trendings', productData);
-            console.log(productPost.data);
+            // console.log(productPost.data);
             if(productPost.data.insertedId){
                 toast.success('Product has been added');
             }
-      // Redirect to My Products page
-      navigate('/products');
+      navigate('/dashboard/myProducts');
     } catch (error) {
-      console.error('Error creating product:', error);
+      // console.error('Error creating product:', error);
 
       // Show error toast
       toast.error(error.message)
@@ -114,6 +116,19 @@ const AddProducts = () => {
               onChange={(e) => setExternalLinks({ ...externalLinks, github: e.target.value })}
             />
           </div>
+        </div>
+        {/* date and time input field */}
+        <div className="mb-4">
+          <label htmlFor="datetime" className="block text-sm font-medium text-gray-600">Date and Time</label>
+          <input
+            type="datetime-local"
+            id="datetime"
+            className="mt-1 p-2 w-full border rounded-md"
+            defaultValue={currentDate}
+            min={currentDate}
+            {...register('datetime', { required: true })}
+          />
+          {errors.datetime && <span className="text-red-500 text-sm">Date and Time are required</span>}
         </div>
 
         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit</button>

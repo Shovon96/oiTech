@@ -10,7 +10,7 @@ const ProductsDetails = () => {
     const { data: [trendingData, featuredData] = [] } = useQuery({
         queryKey: ['trendingAndFeatured', id],
         queryFn: async () => {
-            const trendingPromise = axiosPublic.get(`/trendings/${id}`);
+            const trendingPromise = axiosPublic.get(`/trending/${id}`);
             const featuredPromise = axiosPublic.get(`/features/${id}`);
             
             const [trendingResponse, featuredResponse] = await Promise.all([trendingPromise, featuredPromise]);
