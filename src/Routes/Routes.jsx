@@ -9,6 +9,7 @@ import Register from "../Pages/Login-Registetion/Registetion";
 import PrivetRoutes from "./PrivetRoutes";
 import Dashboard from "../MainLayout/Dashboard";
 import UserProfile from "../Pages/Dashboard/UserProfile";
+import AddProducts from "../Pages/Dashboard/AddProducts";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/userProfile',
                 element: <UserProfile></UserProfile>
+            },
+            {
+                path: '/dashboard/addProducts',
+                element: <AddProducts></AddProducts>
             }
         ]
 

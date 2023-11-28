@@ -19,8 +19,8 @@ const Products = () => {
     })
     // console.log(trending);
 
-    const filteredTrending = trending.filter((item) =>
-        item.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+    const filteredTrending = trending?.filter((item) =>
+        item?.tags?.some((tag) => tag?.toLowerCase().includes(searchQuery.toLowerCase()))
     );
 
     if (isLoading) {
