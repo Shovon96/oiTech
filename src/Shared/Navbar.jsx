@@ -18,6 +18,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import useAdmin from '../Hooks/useAdmin';
 
 const drawerWidth = 240;
 const navItems = ['Home', 'Products'];
@@ -29,6 +30,7 @@ function Navbar(props) {
     const { user, logOut } = useContext(AuthContext)
     const location = useLocation();
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [isAdmin] = useAdmin()
 
     const isItemActive = (item) => {
         // Check if the current route matches the item's path
@@ -141,11 +143,19 @@ function Navbar(props) {
                                             <Typography textAlign="center">{setting}</Typography>
                                         </MenuItem>
                                     ))} */}
-                                    <Link to={'/dashboard'}>
-                                        <Button color="inherit" sx={{ mx: '15px', display: 'block', borderBottom: '1px solid', fontWeight: 'bold' }}>
-                                            Dashboard
-                                        </Button>
-                                    </Link>
+                                    {
+                                        isAdmin ?
+                                            <Link to={'/dashboard/manageUsers'}>
+                                                <Button color="inherit" sx={{ mx: '15px', display: 'block', borderBottom: '1px solid', fontWeight: 'bold' }}>
+                                                    Dashboard
+                                                </Button>
+                                            </Link> :
+                                            <Link to={'/dashboard/userProfile'}>
+                                                <Button color="inherit" sx={{ mx: '15px', display: 'block', borderBottom: '1px solid', fontWeight: 'bold' }}>
+                                                    Dashboard
+                                                </Button>
+                                            </Link>
+                                    }
                                     <Button onClick={handleLogOut} color="inherit" sx={{ mx: '15px', borderBottom: '1px solid', fontWeight: 'bold' }}>
                                         LogOut
                                     </Button>
