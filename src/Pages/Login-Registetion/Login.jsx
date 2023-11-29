@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 // import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import SocialLogin from '../../Shared/SocialLogin';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 
@@ -49,9 +50,9 @@ const Login = () => {
 
     return (
         <>
-            {/* <Helmet>
+            <Helmet>
                 <title>Home | SignIn</title>
-            </Helmet> */}
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row w-full">
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

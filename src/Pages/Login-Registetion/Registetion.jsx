@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SocialLogin from "../../Shared/SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
@@ -40,9 +41,9 @@ const Register = () => {
 
     return (
         <>
-            {/* <Helmet>
+            <Helmet>
                 <title>Home | SignUp</title>
-            </Helmet> */}
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row w-full">
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

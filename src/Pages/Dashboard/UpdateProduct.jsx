@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateProduct = () => {
     const axiosSecure = useAxiosSecure();
@@ -49,69 +50,74 @@ const UpdateProduct = () => {
     };
 
     return (
-        <div className="max-w-xl mx-auto mt-8 p-8 bg-white rounded-md shadow-md">
-            <h1 className="text-2xl font-bold mb-6">Update Product</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="mb-4">
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-600">Product Name</label>
-                    <input defaultValue={name} {...register('name', { required: true })} type="text" id="name" className="mt-1 p-2 w-full border rounded-md" />
-                    {errors.name && <span className="text-red-500 text-sm">Product Name is required</span>}
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="image" className="block text-sm font-medium text-gray-600">Product Image URL</label>
-                    <input defaultValue={image} {...register('image', { required: true })} type="text" id="image" className="mt-1 p-2 w-full border rounded-md" />
-                    {errors.image && <span className="text-red-500 text-sm">Product Image is required</span>}
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="description" className="block text-sm font-medium text-gray-600">Description</label>
-                    <textarea {...register('description', { required: true })} defaultValue={description} id="description" className="mt-1 p-2 w-full border rounded-md" />
-                    {errors.description && <span className="text-red-500 text-sm">Description is required</span>}
-                </div>
-
-                <div className="mb-4">
-                    <label htmlFor="tags" className="block text-sm font-medium text-gray-600">Tags</label>
-                    <input
-                        type="text"
-                        id="tags"
-                        className="mt-1 p-2 w-full border rounded-md"
-                        {...register('tags', { required: true })}
-                        defaultValue={tags}
-                    />
-                    {errors.tags && <span className="text-red-500 text-sm">Tags are required</span>}
-                </div>
-
-                <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-600">External Links</label>
-                    <div className="space-y-2">
-                        <input
-                            type="text"
-                            placeholder="Official Site"
-                            className="p-2 w-full border rounded-md"
-                            {...register('officialSite')}
-                            defaultValue={externalLinks?.officialSite}
-                        />
-                        <input
-                            type="text"
-                            placeholder="Documentation"
-                            className="p-2 w-full border rounded-md"
-                            {...register('documentation')}
-                            defaultValue={externalLinks?.documentation}
-                        />
-                        <input
-                            type="text"
-                            placeholder="GitHub"
-                            className="p-2 w-full border rounded-md"
-                            {...register('github')}
-                            defaultValue={externalLinks?.github}
-                        />
+        <>
+            <Helmet>
+                <title>Dashboard | UpdateProduct</title>
+            </Helmet>
+            <div className="max-w-xl mx-auto mt-8 p-8 bg-white rounded-md shadow-md">
+                <h1 className="text-2xl font-bold mb-6">Update Product</h1>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="mb-4">
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-600">Product Name</label>
+                        <input defaultValue={name} {...register('name', { required: true })} type="text" id="name" className="mt-1 p-2 w-full border rounded-md" />
+                        {errors.name && <span className="text-red-500 text-sm">Product Name is required</span>}
                     </div>
-                </div>
 
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit</button>
-            </form>
-        </div>
+                    <div className="mb-4">
+                        <label htmlFor="image" className="block text-sm font-medium text-gray-600">Product Image URL</label>
+                        <input defaultValue={image} {...register('image', { required: true })} type="text" id="image" className="mt-1 p-2 w-full border rounded-md" />
+                        {errors.image && <span className="text-red-500 text-sm">Product Image is required</span>}
+                    </div>
+
+                    <div className="mb-4">
+                        <label htmlFor="description" className="block text-sm font-medium text-gray-600">Description</label>
+                        <textarea {...register('description', { required: true })} defaultValue={description} id="description" className="mt-1 p-2 w-full border rounded-md" />
+                        {errors.description && <span className="text-red-500 text-sm">Description is required</span>}
+                    </div>
+
+                    <div className="mb-4">
+                        <label htmlFor="tags" className="block text-sm font-medium text-gray-600">Tags</label>
+                        <input
+                            type="text"
+                            id="tags"
+                            className="mt-1 p-2 w-full border rounded-md"
+                            {...register('tags', { required: true })}
+                            defaultValue={tags}
+                        />
+                        {errors.tags && <span className="text-red-500 text-sm">Tags are required</span>}
+                    </div>
+
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-600">External Links</label>
+                        <div className="space-y-2">
+                            <input
+                                type="text"
+                                placeholder="Official Site"
+                                className="p-2 w-full border rounded-md"
+                                {...register('officialSite')}
+                                defaultValue={externalLinks?.officialSite}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Documentation"
+                                className="p-2 w-full border rounded-md"
+                                {...register('documentation')}
+                                defaultValue={externalLinks?.documentation}
+                            />
+                            <input
+                                type="text"
+                                placeholder="GitHub"
+                                className="p-2 w-full border rounded-md"
+                                {...register('github')}
+                                defaultValue={externalLinks?.github}
+                            />
+                        </div>
+                    </div>
+
+                    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit</button>
+                </form>
+            </div>
+        </>
     );
 };
 

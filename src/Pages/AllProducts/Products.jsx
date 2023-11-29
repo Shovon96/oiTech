@@ -4,6 +4,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SectionTitle from "../../Shared/SectionTitle";
 import ProductsCard from "../../Shared/ProductsCard";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Products = () => {
 
@@ -31,6 +32,9 @@ const Products = () => {
 
     return (
         <>
+            <Helmet>
+                <title>OiTech | Products</title>
+            </Helmet>
             <SectionTitle heading={"All Products Here"} title={""}></SectionTitle>
             <div className="mb-4">
                 <input
