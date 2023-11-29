@@ -11,14 +11,15 @@ const MyProducts = () => {
 
     const { user } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
-    const { data: myProductsData = [] } = useQuery({
+    const { data: myProductsData = [], refetch } = useQuery({
         queryKey: ['myProducts'],
         queryFn: async () => {
+            refetch()
             const myProducts = await axiosSecure.get(`/trendings/${user?.email}`)
             return myProducts.data
         }
     })
-    console.log(myProductsData);
+    // console.log(myProductsData);
 
     return (
         <>
@@ -51,7 +52,7 @@ const MyProducts = () => {
                                     <li className="font-bold">GitHub: <small>{prod?.externalLinks?.github}</small></li>
                                 </ul>
                                 <div className="mt-2 flex gap-6">
-                                    <Link to={`/dashboard/updateProduct${prod._id}`}>
+                                    <Link to={`/dashboard/updateProduct/${prod._id}`}>
                                         <button className="btn btn-sm btn-warning text-white uppercase">update <FaEdit /></button>
                                     </Link>
                                     <button className="btn btn-sm btn-error text-white uppercase">delete <MdDelete /></button>
