@@ -6,11 +6,13 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyProducts = () => {
 
     const { user } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
+
     const { data: myProductsData = [], refetch } = useQuery({
         queryKey: ['myProducts'],
         queryFn: async () => {
@@ -20,6 +22,35 @@ const MyProducts = () => {
         }
     })
     // console.log(myProductsData);
+
+    // delete user product
+    const handleDeleteItem = item => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: `You won't be delete ${item?.name}`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.delete(`/trendings/${item._id}`);
+                // console.log(res.data);
+                if (res.data.deletedCount > 0) {
+                    refetch()
+                    Swal.fire({
+                        position: "top-center",
+                        icon: "success",
+                        title: `${item?.name} has been Delete!`,
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                }
+
+            }
+        });
+    }
 
     return (
         <>
@@ -52,10 +83,12 @@ const MyProducts = () => {
                                     <li className="font-bold">GitHub: <small>{prod?.externalLinks?.github}</small></li>
                                 </ul>
                                 <div className="mt-2 flex gap-6">
+                                    {/* update product */}
                                     <Link to={`/dashboard/updateProduct/${prod._id}`}>
                                         <button className="btn btn-sm btn-warning text-white uppercase">update <FaEdit /></button>
                                     </Link>
-                                    <button className="btn btn-sm btn-error text-white uppercase">delete <MdDelete /></button>
+                                    {/* delete product */}
+                                    <button onClick={() => handleDeleteItem(prod)} className="btn btn-sm btn-error text-white uppercase">delete <MdDelete /></button>
                                 </div>
                             </div>
                         </div>
