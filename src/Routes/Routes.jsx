@@ -63,7 +63,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/myProducts',
-                element: <MyProducts></MyProducts>
+                element: <PrivetRoutes><MyProducts></MyProducts></PrivetRoutes>
             },
             {
                 path: '/dashboard/updateProduct/:id',

@@ -19,7 +19,7 @@ const UpdateProduct = () => {
         }
     })
     //   console.log(updatedData);
-    const { image, name, description, tags, externalLinks } = updatedData;
+    const { image, name, description, tags, externalLinks } = updatedData || {}
 
     const onSubmit = async (data) => {
         const tags = data.tags.split(' ') || data.tags.split(',');

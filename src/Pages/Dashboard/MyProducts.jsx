@@ -10,13 +10,13 @@ import Swal from "sweetalert2";
 
 const MyProducts = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
 
     const { data: myProductsData = [], refetch } = useQuery({
         queryKey: ['myProducts'],
+        enabled: !loading && !!user?.email,
         queryFn: async () => {
-            refetch()
             const myProducts = await axiosSecure.get(`/trendings/${user?.email}`)
             return myProducts.data
         }
