@@ -14,6 +14,7 @@ import MyProducts from "../Pages/Dashboard/MyProducts";
 import UpdateProduct from "../Pages/Dashboard/UpdateProduct";
 import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import AdminRoute from "./AdminRoute";
+import StatisticsPieChart from "../Pages/Dashboard/StatisticsPieChart";
 
 const router = createBrowserRouter([
     {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manageUsers',
                 element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+            },
+            {
+                path: '/dashboard/statisticsPieChart',
+                element: <AdminRoute><StatisticsPieChart></StatisticsPieChart></AdminRoute>
             }
         ]
 

@@ -1,7 +1,7 @@
 import axios from "axios";
-
+// https://oi-tech-server.vercel.app
 const axiosPublic = axios.create({
-    baseURL: "https://oi-tech-server.vercel.app"
+    baseURL: "http://localhost:5000"
 })
 
 const useAxiosPublic = () => {

@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import { BiSolidUpArrow } from "react-icons/bi";
+// import { BiSolidUpArrow } from "react-icons/bi";
 // import { useContext } from "react";
 // import { AuthContext } from "../AuthProvider/AuthProvider";
 import UserReview from "./UserReview";
 import Rating from "react-rating";
+import VoteButton from "./VoteButton";
 // import VoteButton from "./VoteButton";
 
 const ProductsDetails = () => {
@@ -71,10 +72,11 @@ const ProductsDetails = () => {
                         </div>
 
                         <div className="mb-4 gap-12 flex">
-                            <button title="vote"
+                            {/* <button title="vote"
                                 className="border px-6 py-2 rounded-md bg-blue-600 text-white font-semibold flex items-center gap-1">
                                 Vote<BiSolidUpArrow />{upvotes}
-                            </button>
+                            </button> */}
+                            <VoteButton upvotes={upvotes}></VoteButton>
                             {/* user review modal show */}
                             <UserReview></UserReview>
                             <button title="Report"

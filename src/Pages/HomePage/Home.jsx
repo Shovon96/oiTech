@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import CarouselSlider from "./CarouselSlider";
 import Featured from "./Featured";
 import Trending from "./Trending";
+import CouponSlider from "./CouponSlider";
 
 const Home = () => {
     return (
@@ -19,6 +20,7 @@ const Home = () => {
             </div>
             <Featured></Featured>
             <Trending></Trending>
+            <CouponSlider></CouponSlider>
         </div>
     );
 };

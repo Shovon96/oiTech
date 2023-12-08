@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { BiSolidUpArrow } from "react-icons/bi";
+// import { BiSolidUpArrow } from "react-icons/bi";
+import VoteButton from "./VoteButton";
 const ProductsCard = ({ item }) => {
     const { _id, image, tags, timestamp, upvotes } = item
     return (
@@ -18,10 +19,11 @@ const ProductsCard = ({ item }) => {
                         </div>
                         <p><small className="text-gray-400"><p>{new Date(timestamp).toLocaleString()}</p></small></p>
                     </div>
-                    <button title="vote"
+                    {/* <button title="vote"
                         className="border px-3 py-1 rounded-md bg-[#eab308] text-white font-semibold flex items-center gap-1">
                         Vote<BiSolidUpArrow />{upvotes}
-                    </button>
+                    </button> */}
+                    <VoteButton upvotes={upvotes}></VoteButton>
                 </div>
 
             </div>
