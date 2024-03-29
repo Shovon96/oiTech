@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
 
 const SocialLogin = () => {
 
@@ -31,7 +32,7 @@ const SocialLogin = () => {
     return (
         <div>
             <div className="flex justify-evenly">
-                <button onClick={handleGoogleSignIn} className="btn btn-outline btn-sm text-lg"><FaGoogle className="text-red-500"></FaGoogle> google</button>
+                <button onClick={handleGoogleSignIn} className="btn btn-outline btn-sm text-lg"><FcGoogle className="text-red-500"></FcGoogle> google</button>
                 <button className="btn btn-outline btn-sm text-lg"><FaGithub></FaGithub> github</button>
             </div>
         </div>

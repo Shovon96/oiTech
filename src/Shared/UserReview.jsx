@@ -49,10 +49,10 @@ const UserReview = () => {
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <h3 className="font-bold text-lg">Review This Room!</h3>
+                    <h3 className="font-bold text-lg">Review This Product!</h3>
                     <form onSubmit={handleReviewSubmit}>
                         <input name="name" type="text" defaultValue={user.displayName} readOnly className="input input-ghost w-full max-w-xs" />
-                        <input name="rating" type="text" placeholder="Please Reting This Room" className="input input-ghost w-full max-w-xs" />
+                        <input name="rating" type="text" placeholder="Please Reting This Product" className="input input-ghost w-full max-w-xs" />
                         <input name="comment" type="text" placeholder="Add a comment" className="input input-ghost w-full max-w-xs" /><br /><br />
                         <button className="btn btn-primary">Submit</button>
                         {/* <Link to='`/roomDetails' className="btn btn-primary">Submit</Link> */}

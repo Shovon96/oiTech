@@ -62,7 +62,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input name="email" type="email" placeholder="email" className="input input-bordered" required />
+                                <input name="email" type="email" placeholder="email@gmail.com" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -78,8 +78,12 @@ const Login = () => {
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
+                                <div className='text-xs text-gray-500 textarea-disabled'>
+                                    <h1>Admin Email: shovon@gmail.com</h1>
+                                    <h1>Admin Pass: shovon#23</h1>
+                                </div>
                             </div>
-                            <div className="form-control mt-6">
+                            <div className="form-control mt-2">
                                 <button disabled={disabled} className="btn bg-blue-600 hover:bg-blue-700  text-white font-bold text-lg ">Login</button>
                             </div>
                         </form>
